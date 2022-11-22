@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do list</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        #todo h1 {
+            text-align: center;
+            margin-top: 2%;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+
+        }
+        #list {
+            margin-top: 7%;
+            margin-left: 35%;
+            width: 30%;
+            height: 10cm;
+            background-color: white;
+            border-radius: 15%  ;
+            padding: 5%;
+            background: linear-gradient(45deg,white,pink 80%);
+            overflow: hidden;
+            box-shadow: 8px 8px 5px 3px white;
+
+        }
+        #input {
+            width: 100%;
+            margin-left: -20%;
+            margin-right: 2%;
+
+        }
+        body {
+            background-image: linear-gradient(45deg,purple 80%,pink 20%);
+        }
+        
+    </style>
+    <script>
+        // A $( document ).ready() block.
+$( document ).ready(function() {
+    $('.todoitem').change(function () {
+    if ($(this).prop("checked")) {
+        $(this).closest( "li" ).find(".todoitem-label").css({"font-weight": "bold", "text-decoration": "line-through"});
+       
+    }else{
+        $(this).closest( "li" ).find(".todoitem-label").css({"font-weight": "normal", "text-decoration": "none"});
+    }
+    // not checked
+});
+
+});
+
+    </script>
+</head>
+<body >
+   <div class="container" id="todo">
+    <h1 >ToDo LIST</h1>
+
+    <h1> <%=KindofDay %> </h1>
+    <div id="list">
+    
+        <div id="form " class="d-flex">
+            <form action="/" method="post" class="d-flex">
+                <input id="input" class="form-control "  type="text" name="newitem" autocomplete="off" required>
+                <button class="btn btn-success" type="submit">Add</button>
+                <!-- <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                <label for="vehicle1"> I have a bike</label><br>
+                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                <label for="vehicle2"> I have a car</label><br>
+                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                <label for="vehicle3"> I have a boat</label><br><br> -->
+    
+            </form>
+        </div>
+        <ul class="todoitems">
+            <% for( let i=0;i<newListItems.length;i++) { %>
+                <li>
+                    <input type="checkbox" class="todoitem">
+                    <label class="todoitem-label"><%= newListItems[i] %></label>
+                </li>
+                <% }%>
+        
+        </ul>
+</div>
+</div>
+</body>
+</html>
